@@ -9,6 +9,7 @@ function getRandomIntInclusive(min, max) {
 }
 getRandomIntInclusive (0,2.5);
 
+
 //Функция для проверки максимальной длинны строки
 
 function checkMaxStringLength(verifiedString, maxLength) {
