@@ -1,4 +1,4 @@
+import {similarPhotos} from './popup.js';
 
-import {createSumFotos} from './data.js';
-createSumFotos();
+similarPhotos();
 

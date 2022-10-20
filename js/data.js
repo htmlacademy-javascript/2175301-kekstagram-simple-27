@@ -1,6 +1,6 @@
 
-import {getRandomArrayElement} from './util.js';
-import {getRandomIntInclusive} from './util.js';
+import {getRandomArrayElement, getRandomIntInclusive} from './util.js';
+
 
 const descriptions = ['авангардистский', 'авангардный', 'аванпостный', 'авансовый', 'авантажный', 'авантюриновый', 'авантюристический', 'авантюристский', 'авантюрный', 'аварийный', 'аварский', 'августейший', 'августовский', 'авиадесантный', 'авиамодельный', 'авиамоторный', 'авианосный', 'авиапочтовый', 'авиаремонтный', 'авиаспортивный', 'авиастроительный', 'авиаторский', 'авиатранспортный', 'авиационный', 'авитаминозный'];
 const like = Array.from({length: 186}, (_, i) => i + 15);
@@ -18,7 +18,7 @@ const createDescriptionFoto = (id) => ({
   commets: getRandomArrayElement(commets),
 });
 
-const createSumFotos = Array.from({length: COUNT_OBJ}, (_element, index) => createDescriptionFoto(index + 1));
+const createSumFotos = Array.from({length: COUNT_OBJ}, (_element, index) => createDescriptionFoto(index + 1)); //функция генерации массива объектов
 
 createSumFotos();
 
