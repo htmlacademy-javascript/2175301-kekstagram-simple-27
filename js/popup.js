@@ -9,6 +9,8 @@ const similarUserTemplate = document.querySelector('#picture') //Находим 
 
 const similarPhotos = createSumFotos();
 
+const createUsersPhotos () => {
+
 const similarListFragment = document.createDocumentFragment(); //Все кладем в фрагмент
 
 //проходим методом по массиву объектов, добавляя данные в клонированные шаблоны
@@ -22,5 +24,5 @@ similarPhotos.forEach(({url, likes, commets}) => {
 });
 
 document.querySelector('.picture').append(similarListFragment);
-
-export {similarPhotos};
+};
+export {createUsersPhotos};

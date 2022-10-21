@@ -1,4 +1,4 @@
-import {similarPhotos} from './popup.js';
+import {createUsersPhotos} from './popup.js';
 
-similarPhotos();
+createUsersPhotos();
 
