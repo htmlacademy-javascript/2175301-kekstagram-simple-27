@@ -9,20 +9,19 @@ const similarUserTemplate = document.querySelector('#picture') //Находим 
 
 const similarPhotos = createSumFotos();
 
-const createUsersPhotos () => {
+const createUsersPhotos = function () {
 
-const similarListFragment = document.createDocumentFragment(); //Все кладем в фрагмент
+  const similarListFragment = document.createDocumentFragment(); //Все кладем в фрагмент
 
-//проходим методом по массиву объектов, добавляя данные в клонированные шаблоны
+  //проходим методом по массиву объектов, добавляя данные в клонированные шаблоны
+  similarPhotos.forEach(({ url, likes, commets }) => {
+    const userElement = similarUserTemplate.cloneNode(true);
+    userElement.querySelector('.picture__img').src = url;
+    userElement.querySelector('.picture__likes').textContent = likes;
+    userElement.querySelector('.picture__comments').textContent = commets;
+    similarListFragment.append(userElement);
+  });
 
-similarPhotos.forEach(({url, likes, commets}) => {
-  const userElement = similarUserTemplate.cloneNode(true);
-  userElement.querySelector('.picture__img').src = url;
-  userElement.querySelector('.picture__likes').textContent = likes;
-  userElement.querySelector('.picture__comments').textContent = commets;
-  similarListFragment.append(userElement);
-});
-
-document.querySelector('.picture').append(similarListFragment);
+  document.querySelector('.picture').append(similarListFragment);
 };
 export {createUsersPhotos};
