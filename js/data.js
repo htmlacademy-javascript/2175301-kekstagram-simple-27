@@ -12,7 +12,7 @@ const COUNT_OBJ = 25;
 
 const createDescriptionFoto = (id) => ({
   id: id,
-  url: `photos${id}.jpg`,
+  url: `photos/${id}.jpg`,
   description: descriptions[(getRandomIntInclusive(0, descriptions.length - 1))],
   likes: getRandomArrayElement(like),
   commets: getRandomArrayElement(commets),

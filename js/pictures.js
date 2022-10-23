@@ -21,11 +21,9 @@ const createUsersPhotos = () => {
     userElement.querySelector('.picture__comments').textContent = commets;
     similarListFragment.append(userElement);
   });
-  document.querySelector('section').append(similarListFragment);
+  document.querySelector('.pictures').append(similarListFragment);
 };
 
 createUsersPhotos();
 
 export {createUsersPhotos};
-
-
