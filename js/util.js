@@ -8,7 +8,7 @@ const getRandomIntInclusive = (min, max) => {
     return NaN;
   } else { return Math.floor(Math.random() * ((maxRound - minRound + 1)) + minRound); }
 };
-getRandomIntInclusive();
+getRandomIntInclusive(1,25);
 
 //Функция генерации случайного элемента
 

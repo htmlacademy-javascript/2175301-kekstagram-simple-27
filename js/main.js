@@ -1,4 +1,4 @@
+import {createUsersPhotos} from './pictures.js';
 
-import {createSumFotos} from './data.js';
-createSumFotos();
+createUsersPhotos();
 
