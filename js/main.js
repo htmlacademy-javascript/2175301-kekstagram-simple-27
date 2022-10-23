@@ -1,4 +1,4 @@
-import {createUsersPhotos} from './popup.js';
+import {createUsersPhotos} from './pictures.js';
 
 createUsersPhotos();
 

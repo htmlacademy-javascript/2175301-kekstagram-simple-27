@@ -1,27 +1,31 @@
-import {createSumFotos} from './data.js';
+import {createSumPhotos} from './data.js';
 
-const usersPhotos = document.querySelector('.pictures__title');
-usersPhotos.classList.remove('hidden');
+//const usersPhotos = document.querySelector('.pictures__title');
+//usersPhotos.classList.remove('visually-hidden');
 
 const similarUserTemplate = document.querySelector('#picture') //Находим шаблон
   .content
   .querySelector('.picture');
 
-const similarPhotos = createSumFotos();
+const similarPhotos = createSumPhotos();
 
-const createUsersPhotos = function () {
+const similarListFragment = document.createDocumentFragment(); //Все кладем в фрагмент
 
-  const similarListFragment = document.createDocumentFragment(); //Все кладем в фрагмент
+const createUsersPhotos = () => {
 
   //проходим методом по массиву объектов, добавляя данные в клонированные шаблоны
-  similarPhotos.forEach(({ url, likes, commets }) => {
+  similarPhotos.forEach(({url, likes, commets}) => {
     const userElement = similarUserTemplate.cloneNode(true);
     userElement.querySelector('.picture__img').src = url;
     userElement.querySelector('.picture__likes').textContent = likes;
     userElement.querySelector('.picture__comments').textContent = commets;
     similarListFragment.append(userElement);
   });
-
-  document.querySelector('.picture').append(similarListFragment);
+  document.querySelector('section').append(similarListFragment);
 };
+
+createUsersPhotos();
+
 export {createUsersPhotos};
+
+

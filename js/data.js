@@ -17,9 +17,11 @@ const createDescriptionFoto = (id) => ({
   likes: getRandomArrayElement(like),
   commets: getRandomArrayElement(commets),
 });
+const createSumPhotos = () => {
+  const sumPhotos = Array.from({length: COUNT_OBJ}, (_element, index) => createDescriptionFoto(index + 1));
+  return sumPhotos;
+};
 
-const createSumFotos = Array.from({length: COUNT_OBJ}, (_element, index) => createDescriptionFoto(index + 1)); //функция генерации массива объектов
+createSumPhotos();
 
-createSumFotos();
-
-export {createSumFotos};
+export {createSumPhotos};
