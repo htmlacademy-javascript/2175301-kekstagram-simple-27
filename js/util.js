@@ -8,14 +8,15 @@ const getRandomIntInclusive = (min, max) => {
     return NaN;
   } else { return Math.floor(Math.random() * ((maxRound - minRound + 1)) + minRound); }
 };
-getRandomIntInclusive(1,25);
+getRandomIntInclusive();
 
 //Функция генерации случайного элемента
 
 const getRandomArrayElement = (elements) => elements[getRandomIntInclusive(0, elements.length - 1)];
 
-export {getRandomArrayElement};
-export {getRandomIntInclusive};
+const isEscapeKey = (evt) => evt.key === 'Escape'; //проверка нажатой клавиши escape
+
+export {getRandomArrayElement,getRandomIntInclusive,isEscapeKey};
 
 //Функция для проверки максимальной длинны строки
 

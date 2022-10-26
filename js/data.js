@@ -22,6 +22,4 @@ const createSumPhotos = () => {
   return sumPhotos;
 };
 
-createSumPhotos();
-
 export {createSumPhotos};
