@@ -24,11 +24,11 @@ const closeUserModal = () => {
   document.removeEventListener('keydown', onModalEscKeydown);
 };
 
-const onFormSubmit = (evt) => {
+/*const onFormSubmit = (evt) => {
   evt.preventDefault();
   closeUserModal();
 };
-
+*/
 function onModalEscKeydown (evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
@@ -44,10 +44,10 @@ userCloseModalElement.addEventListener('click', () => {
   closeUserModal();
 });
 
-userCloseModalElement.removeEventListener('click', () => {
+/*userCloseModalElement.removeEventListener('click', () => {
   closeUserModal();
 });
 
 formSubmit.addEventListener('submit',onFormSubmit);
-
+*/
 export {openUserModal,closeUserModal};
