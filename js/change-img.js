@@ -5,8 +5,9 @@ const buttonSmaller = document.querySelector('.scale__control--smaller');
 
 const buttonBigger = document.querySelector('.scale__control--bigger');
 
-const fragmentPictures = document.querySelector('.img-upload__preview');
+const fragmentPictures = document.querySelector('.img-upload__preview img');
 
+fieldsShange.value = 100;
 
 const setScale = (scale) => {
   fieldsShange.value = `${scale}%`;
@@ -15,18 +16,17 @@ const setScale = (scale) => {
 
 buttonBigger.addEventListener('click', () => {
   const scale = parseInt(fieldsShange.value, 10);
-  if (scale < 100 && scale >= 25) {
+  if (scale < 100) {
     setScale(scale + 25);
   }
 });
 
 buttonSmaller.addEventListener('click', () => {
   const scale = parseInt(fieldsShange.value, 10);
-  if (scale <= 100 && scale > 25) {
+  if ( scale > 25) {
     setScale(scale - 25);
   }
 });
-
 
 /*
 noUiSlider.create(field, {
