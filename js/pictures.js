@@ -1,8 +1,5 @@
 import {createSumPhotos} from './data.js';
 
-//const usersPhotos = document.querySelector('.pictures__title');
-//usersPhotos.classList.remove('visually-hidden');
-
 const similarUserTemplate = document.querySelector('#picture') //Находим шаблон
   .content
   .querySelector('.picture');
