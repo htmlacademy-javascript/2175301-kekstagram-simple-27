@@ -7,38 +7,39 @@ const buttonBigger = document.querySelector('.scale__control--bigger');
 
 const fragmentPictures = document.querySelector('.img-upload__preview img');
 
-fieldsShange.value = 100;
+const SCALE = 100;
+const MIN_SCALE = 25;
+const MAX_SCALE = 100;
+const STEP_SCALE = 25;
 
-const setScale = (scale) => {
-  fieldsShange.value = `${scale}%`;
-  fragmentPictures.style.transform = `scale(${scale / 100})`;
+const setScale = (value = SCALE) => {
+  fragmentPictures.style.transform = `scale(${value / 100})`;
+  fieldsShange.value = `${value}%`;
 };
 
-buttonBigger.addEventListener('click', () => {
-  const scale = parseInt(fieldsShange.value, 10);
-  if (scale < 100) {
-    setScale(scale + 25);
+const buttonBiggerClick = () => {
+  const currentValue = parseInt(fieldsShange.value, 10);
+  let newValue = currentValue + STEP_SCALE;
+  if (newValue > MAX_SCALE) {
+    newValue = MAX_SCALE;
   }
-});
+  setScale(newValue);
+};
 
-buttonSmaller.addEventListener('click', () => {
-  const scale = parseInt(fieldsShange.value, 10);
-  if ( scale > 25) {
-    setScale(scale - 25);
+const buttonSmallerClick = () => {
+  const currentValue = parseInt(fieldsShange.value, 10);
+  let newValue = currentValue - STEP_SCALE;
+  if ( newValue < MIN_SCALE) {
+    newValue = MIN_SCALE;
   }
-});
+  setScale(newValue);
+};
 
-/*
-noUiSlider.create(field, {
-  range: {
-    min: 0,
-    max: 100,
-  },
-  start: 100,
-  step: 25,
-});
+const scaleReset = () => {
+  setScale();
+};
 
-field.noUiSlider.on('update', () => {
-  fieldsShange.value = field.noUiSlider.get();
-});
-*/
+buttonBigger.addEventListener('click', buttonBiggerClick);
+buttonSmaller.addEventListener('click', buttonSmallerClick);
+
+export { scaleReset };

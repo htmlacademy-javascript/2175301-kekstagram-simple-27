@@ -30,10 +30,3 @@ function checkMaxStringLength(verifiedString, maxLength) {
 }
 checkMaxStringLength ('',50);
 
-//Черновик функции создания массива с уникальными числами
-
-//const indexes = [];
-//const getRandomArrayElement = () => {
-// const index = getRandomIntInclusive(1, 25);
-//return (indexes.includes(index)) ? getRandomArrayElement() : indexes.push(index);
-//};
