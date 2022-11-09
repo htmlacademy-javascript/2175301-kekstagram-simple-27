@@ -1,8 +1,11 @@
 
+
 const image = document.querySelector('.img-upload__preview');
 const sliderElement = document.querySelector('.effect-level__slider');
 const effectLevel = document.querySelector('.effect-level__value');
 const form = document.querySelector('.img-upload__form');
+const submitButton = document.querySelector('.img-upload__submit');
+//const fieldDescription = document.querySelector('.text__description');
 
 const EFFECTS = [
   {
@@ -114,4 +117,25 @@ updateSlider();
 form.addEventListener('change', onFormChange);
 sliderElement.noUiSlider.on('update', onSliderUpdate);
 
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Публикую...';
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Опубликовать';
+};
+
+const setUserFormSubmit = (onSuccess) => {
+  form.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    blockSubmitButton();
+    await onSuccess(new FormData(evt.target));
+    unblockSubmitButton();
+  });
+};
+
+
 export {resetEffects};
+export {setUserFormSubmit};

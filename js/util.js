@@ -1,4 +1,4 @@
-
+const ALERT_SHOW_TIME = 2000;
 //Функция генерации случайного числа
 
 const getRandomIntInclusive = (min, max) => {
@@ -16,8 +16,6 @@ const getRandomArrayElement = (elements) => elements[getRandomIntInclusive(0, el
 
 const isEscapeKey = (evt) => evt.key === 'Escape'; //проверка нажатой клавиши escape
 
-export {getRandomArrayElement,getRandomIntInclusive,isEscapeKey};
-
 //Функция для проверки максимальной длинны строки
 
 function checkMaxStringLength(verifiedString, maxLength) {
@@ -30,3 +28,24 @@ function checkMaxStringLength(verifiedString, maxLength) {
 }
 checkMaxStringLength ('',50);
 
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.zIndex = '100';
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.left = '0';
+  alertContainer.style.top = '0';
+  alertContainer.style.right = '0';
+  alertContainer.style.padding = '10px 3px';
+  alertContainer.style.fontSize = '30px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'orange';
+
+  alertContainer.textContent = message;
+
+  document.body.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, ALERT_SHOW_TIME);
+};
+export {getRandomArrayElement,getRandomIntInclusive,isEscapeKey,showAlert};
