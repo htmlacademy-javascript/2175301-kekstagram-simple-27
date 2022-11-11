@@ -2,27 +2,34 @@ import {createUsersPhotos} from './pictures.js';
 import './change-img.js';
 import './slider.js';
 import './api.js';
-import {getData, sendData} from './api.js';
+import {getData} from './api.js';
 import { setUserFormSubmit, resetEffects } from './slider.js';
 import { closeUserModal } from './form.js';
 import { showAlert } from './util.js';
-import { showErrorMessage, showSuccessMessage } from './message.js';
+import { showSuccessMessage } from './message.js';
 
-const SIMILAR_WIZARD_COUNT = 25;
 
-getData((photos) => {
-  createUsersPhotos(photos.slice(0, SIMILAR_WIZARD_COUNT));
-});
+const PHOTOS_COUNT = 25;
 
-setUserFormSubmit(closeUserModal);
+getData(
+  (photos, error) => {
+    createUsersPhotos(photos.slice(0, PHOTOS_COUNT));
+    setUserFormSubmit(closeUserModal);
+    setUserFormSubmit(resetEffects);
+    setUserFormSubmit(showSuccessMessage);
+    showAlert(error);
+  });
 
-//createUsersPhotos();
+
+/*createUsersPhotos();
 
 const onSendDataSuccess = () => {
   resetEffects();
   showSuccessMessage();
 };
-setUserFormSubmit (async (data) => {
-  await sendData(onSendDataSuccess, showErrorMessage, data);
+setUserFormSubmit (async (photos) => {
+  await sendData(onSendDataSuccess, showErrorMessage, photos);
 });
 getData(showAlert);
+*/
+

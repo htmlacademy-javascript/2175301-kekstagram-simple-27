@@ -5,7 +5,7 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const effectLevel = document.querySelector('.effect-level__value');
 const form = document.querySelector('.img-upload__form');
 const submitButton = document.querySelector('.img-upload__submit');
-//const fieldDescription = document.querySelector('.text__description');
+const fieldDescription = document.querySelector('.text__description');
 
 const EFFECTS = [
   {
@@ -101,6 +101,7 @@ const onSliderUpdate = () => {
 const resetEffects = () => {
   chosenEffect = DEFAULT_EFFECT;
   updateSlider();
+  fieldDescription.value = '';
 };
 
 noUiSlider.create(sliderElement, {

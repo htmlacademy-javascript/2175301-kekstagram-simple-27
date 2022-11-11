@@ -1,37 +1,35 @@
-import { showAlert } from './util.js';
+//import './util.js';
 
-const getData = async (onSuccess, onFail) => {
-  try {
-    const response = await fetch('https://27.javascript.pages.academy/kekstagram-simple/data');
-    if (!response.ok) {
-      throw new Error('Не удалось загрузить фото');
-    }
-    const photos = await response.json();
-    onSuccess(photos);
-  } catch (error) {
-    onFail(error.message);
-
-  }
+const getData = (onSuccess, onFail) => {
+  fetch ('https://27.javascript.pages.academy/kekstagram-simple/data')
+    .then ((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Ошибка загрузки данных');
+    })
+    .then((photos) => onSuccess(photos))
+    .catch((error) =>
+      onFail(error.message));
 };
 
-const sendData = async (onSuccess, onFail, body) => {
-  try {
-    const response = await fetch('https://https://27.javascript.pages.academy/kekstagram-simple',
-      {
-        method: 'POST',
-        body,
+
+const sendData = (onSuccess, onFail, body) => {
+  fetch('https://27.javascript.pages.academy/kekstagram-simple',
+    {
+      method: 'POST',
+      body,
+    })
+    .then((response) => {
+      if (response.ok) {
+        onSuccess();
+        return;
       }
-    );
 
-    if (!response.ok) {
-      throw new Error('Не удалось загрузить фото. Попробуйте еще раз');
-    }
+      throw new Error('Произошла ошибка отправки данных');
+    })
+    .catch(() => onFail());
 
-    onSuccess();
-  } catch (error) {
-    onFail(error.message);
-    showAlert();
-  }
 };
 
 export {getData, sendData};
