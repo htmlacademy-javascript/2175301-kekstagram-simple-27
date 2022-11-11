@@ -1,4 +1,4 @@
-//import {createSumPhotos} from './data.js';
+
 
 const similarUserTemplate = document.querySelector('#picture') //Находим шаблон
   .content

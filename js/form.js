@@ -24,12 +24,6 @@ const closeUserModal = () => {
   document.removeEventListener('keydown', onModalEscKeydown);
 };
 
-/*
-function checkTypeFile() {
-  let file = document.querySelector("#upload-file");
-  if ( file.img === true ) { load }
-}
-*/
 
 function onModalEscKeydown (evt) {
   if (isEscapeKey(evt)) {

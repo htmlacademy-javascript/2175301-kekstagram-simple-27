@@ -1,3 +1,6 @@
+import { closeUserModal } from './form.js';
+import { showSuccessMessage } from './message.js';
+import { sendData } from './api.js';
 
 
 const image = document.querySelector('.img-upload__preview');
@@ -128,15 +131,16 @@ const unblockSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
 };
 
-const setUserFormSubmit = (onSuccess) => {
-  form.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    blockSubmitButton();
-    await onSuccess(new FormData(evt.target));
-    unblockSubmitButton();
-  });
-};
 
+form.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  blockSubmitButton();
+  closeUserModal();
+  resetEffects();
+  showSuccessMessage();
+  unblockSubmitButton();
+  sendData(new FormData(evt.target));
+});
 
 export {resetEffects};
-export {setUserFormSubmit};
+
