@@ -12,7 +12,7 @@ const getData = (onSuccess, onFail) => {
       onFail(error.message));
 };
 
-const sendData = (onSuccess, onFail, body) => {
+const sendData = (body, onSuccess, onFail) => {
   fetch('https://27.javascript.pages.academy/kekstagram-simple',
     {
       method: 'POST',
@@ -23,10 +23,11 @@ const sendData = (onSuccess, onFail, body) => {
         onSuccess();
         return;
       }
-
       throw new Error('Произошла ошибка отправки данных');
     })
-    .catch(() => onFail());
+    .catch(() => {
+      onFail('Произошла ошибка отправки данных');
+    });
 };
 
 export {getData, sendData};

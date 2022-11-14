@@ -1,5 +1,5 @@
 import { closeUserModal } from './form.js';
-import { showSuccessMessage } from './message.js';
+import { showSuccessMessage, showErrorMessage } from './message.js';
 import { sendData } from './api.js';
 
 
@@ -131,16 +131,29 @@ const unblockSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
 };
 
+function setUserFormSubmit(onSuccess) {
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    blockSubmitButton();
+    closeUserModal();
+    resetEffects();
+    showSuccessMessage();
+    unblockSubmitButton();
 
-form.addEventListener('submit', async (evt) => {
-  evt.preventDefault();
-  blockSubmitButton();
-  closeUserModal();
-  resetEffects();
-  showSuccessMessage();
-  unblockSubmitButton();
-  sendData(new FormData(evt.target));
-});
-
+    sendData(
+      new FormData(evt.target),
+      () => {
+        onSuccess();
+        unblockSubmitButton();
+        showSuccessMessage();
+      },
+      () => {
+        unblockSubmitButton();
+        showErrorMessage();
+      },
+    );
+  });
+}
+setUserFormSubmit();
 export {resetEffects};
 
