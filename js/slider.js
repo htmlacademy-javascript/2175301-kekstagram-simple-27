@@ -135,10 +135,6 @@ function setUserFormSubmit(onSuccess) {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     blockSubmitButton();
-    closeUserModal();
-    resetEffects();
-    showSuccessMessage();
-    unblockSubmitButton();
 
     sendData(
       new FormData(evt.target),
@@ -150,10 +146,11 @@ function setUserFormSubmit(onSuccess) {
       () => {
         unblockSubmitButton();
         showErrorMessage();
+        closeUserModal();
       },
     );
   });
 }
-setUserFormSubmit();
-export {resetEffects};
+
+export {resetEffects, setUserFormSubmit};
 
