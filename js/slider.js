@@ -1,7 +1,6 @@
-import { closeUserModal } from './form.js';
+
 import { showSuccessMessage, showErrorMessage } from './message.js';
 import { sendData } from './api.js';
-
 
 const image = document.querySelector('.img-upload__preview');
 const sliderElement = document.querySelector('.effect-level__slider');
@@ -9,6 +8,7 @@ const effectLevel = document.querySelector('.effect-level__value');
 const form = document.querySelector('.img-upload__form');
 const submitButton = document.querySelector('.img-upload__submit');
 const fieldDescription = document.querySelector('.text__description');
+const sliderContainer = document.querySelector('.img-upload__effect-level');
 
 const EFFECTS = [
   {
@@ -76,6 +76,7 @@ const updateSlider = () => {
 
   if (isDefault()) {
     sliderElement.classList.add('hidden');
+    sliderContainer.style.display = 'none';
   }
 };
 
@@ -85,6 +86,11 @@ const onFormChange = (evt) => {
   }
   chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value); {
     updateSlider();
+  }
+  if (evt.target.value === 'none') {
+    sliderContainer.style.display = 'none';
+  } else {
+    sliderContainer.style.display = 'block';
   }
 };
 
@@ -131,7 +137,7 @@ const unblockSubmitButton = () => {
   submitButton.textContent = 'Опубликовать';
 };
 
-function setUserFormSubmit(onSuccess) {
+const setUserFormSubmit = (onSuccess) => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     blockSubmitButton();
@@ -146,11 +152,10 @@ function setUserFormSubmit(onSuccess) {
       () => {
         unblockSubmitButton();
         showErrorMessage();
-        closeUserModal();
       },
     );
   });
-}
+};
 
 export {resetEffects, setUserFormSubmit};
 

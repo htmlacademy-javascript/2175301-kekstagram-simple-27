@@ -1,3 +1,5 @@
+import { closeUserModal } from './form.js';
+
 const succesMessage = document.querySelector('#success').content.querySelector('.success');
 const errorMessage = document.querySelector('#error').content.querySelector('.error');
 const bodyElement = document.querySelector('body');
@@ -13,8 +15,11 @@ const onOverlayClick = () => {
 const onMessageEscKeydown = (evt) => {
   if (isEscapeEvent(evt)) {
     evt.preventDefault();
-
     hideMessage();
+    const hasHiddenPopup = document.querySelector('.error');
+    if (!hasHiddenPopup) {
+      closeUserModal();
+    }
   }
 };
 const showSuccessMessage = () => {
