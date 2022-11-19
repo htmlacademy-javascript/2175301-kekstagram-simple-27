@@ -15,14 +15,17 @@ const onOverlayClick = () => {
 const onMessageEscKeydown = (evt) => {
   if (isEscapeEvent(evt)) {
     evt.preventDefault();
-    closeUserModal();
-    const hasHiddenPopup = document.querySelector('.error');
-    if (!hasHiddenPopup) {
+    const hiddenPopup = document.querySelector('.error');
+    if (!hiddenPopup) {
       closeUserModal();
+    } else {hiddenPopup.remove();}
+    const hiddenPopupDone = document.querySelector('.success');
+    if (hiddenPopupDone) {
+      hiddenPopupDone.remove();
     }
-    hideMessage();
   }
 };
+
 const showSuccessMessage = () => {
   const succesMessageElement = succesMessage.cloneNode(true);
   document.addEventListener('keydown',onMessageEscKeydown);
@@ -34,6 +37,7 @@ const showErrorMessage = () => {
   const errorMessageElement = errorMessage.cloneNode(true);
   document.addEventListener('keydown',onMessageEscKeydown);
   errorMessageElement.querySelector('.error__button').addEventListener('click', onErrorButtonClick);
+  document.addEventListener('click',onOverlayClick);
   bodyElement.append(errorMessageElement);
   bodyElement.style.overflow = 'hidden';
 };
@@ -45,4 +49,4 @@ function hideMessage () {
   bodyElement.style.overflow = 'auto';
 }
 
-export { showErrorMessage, showSuccessMessage};
+export { showErrorMessage, showSuccessMessage, onMessageEscKeydown};

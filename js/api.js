@@ -1,5 +1,6 @@
+import { showAlert } from './util.js';
 
-const getData = (onSuccess, onFail) => {
+const getData = (onSuccess) => {
   fetch ('https://27.javascript.pages.academy/kekstagram-simple/data')
     .then ((response) => {
       if (response.ok) {
@@ -9,7 +10,7 @@ const getData = (onSuccess, onFail) => {
     })
     .then((photos) => onSuccess(photos))
     .catch((error) =>
-      onFail(error.message));
+      showAlert(error.message));
 };
 
 const sendData = (body, onSuccess, onFail) => {

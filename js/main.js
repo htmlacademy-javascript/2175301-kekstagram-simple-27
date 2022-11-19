@@ -8,9 +8,10 @@ import { closeUserModal } from './form.js';
 
 const PHOTOS_COUNT = 25;
 
-getData(
-  (photos) => {
-    createUsersPhotos(photos.slice(0, PHOTOS_COUNT));
-  });
+const onSuccess = (photos) => {
+  createUsersPhotos(photos.slice(0, PHOTOS_COUNT));
+};
+getData(onSuccess);
+
 setUserFormSubmit(closeUserModal);
 
