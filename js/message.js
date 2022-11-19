@@ -15,11 +15,12 @@ const onOverlayClick = () => {
 const onMessageEscKeydown = (evt) => {
   if (isEscapeEvent(evt)) {
     evt.preventDefault();
-    hideMessage();
+    closeUserModal();
     const hasHiddenPopup = document.querySelector('.error');
     if (!hasHiddenPopup) {
       closeUserModal();
     }
+    hideMessage();
   }
 };
 const showSuccessMessage = () => {
