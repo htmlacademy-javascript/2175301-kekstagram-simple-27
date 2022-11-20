@@ -1,7 +1,17 @@
 import {createUsersPhotos} from './pictures.js';
-import './form.js';
 import './change-img.js';
 import './slider.js';
+import { setUserFormSubmit } from './slider.js';
+import './api.js';
+import {getData} from './api.js';
+import { closeUserModal } from './form.js';
 
-createUsersPhotos();
+const PHOTOS_COUNT = 25;
+
+const onSuccess = (photos) => {
+  createUsersPhotos(photos.slice(0, PHOTOS_COUNT));
+};
+getData(onSuccess);
+
+setUserFormSubmit(closeUserModal);
 

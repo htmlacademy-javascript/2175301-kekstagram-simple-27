@@ -1,16 +1,14 @@
-import {createSumPhotos} from './data.js';
+
 
 const similarUserTemplate = document.querySelector('#picture') //Находим шаблон
   .content
   .querySelector('.picture');
 
-const similarPhotos = createSumPhotos();
+const createUsersPhotos = (similarPhotos) => {
 
-const similarListFragment = document.createDocumentFragment(); //Все кладем в фрагмент
-
-const createUsersPhotos = () => {
-
+  const similarListFragment = document.createDocumentFragment(); //Все кладем в фрагмент
   //проходим методом по массиву объектов, добавляя данные в клонированные шаблоны
+
   similarPhotos.forEach(({url, likes, commets}) => {
     const userElement = similarUserTemplate.cloneNode(true);
     userElement.querySelector('.picture__img').src = url;
@@ -20,7 +18,5 @@ const createUsersPhotos = () => {
   });
   document.querySelector('.pictures').append(similarListFragment);
 };
-
-createUsersPhotos();
 
 export {createUsersPhotos};
