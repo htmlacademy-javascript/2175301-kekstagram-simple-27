@@ -44,7 +44,7 @@ const showErrorMessage = () => {
 };
 function hideMessage () {
   const messageElement = document.querySelector('.success') || document.querySelector('.error');
-  messageElement.remove();
+  messageElement?.remove();
   document.removeEventListener('keydown',onMessageEscKeydown);
   document.removeEventListener('click',onOverlayClick);
   bodyElement.style.overflow = 'auto';

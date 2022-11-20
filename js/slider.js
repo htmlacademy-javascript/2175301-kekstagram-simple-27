@@ -2,14 +2,6 @@
 import { showSuccessMessage, showErrorMessage, } from './message.js';
 import { sendData } from './api.js';
 
-const image = document.querySelector('.img-upload__preview');
-const sliderElement = document.querySelector('.effect-level__slider');
-const effectLevel = document.querySelector('.effect-level__value');
-const form = document.querySelector('.img-upload__form');
-const submitButton = document.querySelector('.img-upload__submit');
-const fieldDescription = document.querySelector('.text__description');
-const sliderContainer = document.querySelector('.img-upload__effect-level');
-
 const EFFECTS = [
   {
     name: 'none',
@@ -59,6 +51,15 @@ const EFFECTS = [
   },
 ];
 const DEFAULT_EFFECT = EFFECTS[0];
+
+const image = document.querySelector('.img-upload__preview');
+const sliderElement = document.querySelector('.effect-level__slider');
+const effectLevel = document.querySelector('.effect-level__value');
+const form = document.querySelector('.img-upload__form');
+const submitButton = document.querySelector('.img-upload__submit');
+const fieldDescription = document.querySelector('.text__description');
+const sliderContainer = document.querySelector('.img-upload__effect-level');
+
 let chosenEffect = DEFAULT_EFFECT;
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
