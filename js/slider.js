@@ -1,5 +1,5 @@
 
-import { showSuccessMessage, showErrorMessage } from './message.js';
+import { showSuccessMessage, showErrorMessage, } from './message.js';
 import { sendData } from './api.js';
 
 const image = document.querySelector('.img-upload__preview');

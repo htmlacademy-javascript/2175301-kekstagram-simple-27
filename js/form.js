@@ -1,4 +1,4 @@
-//import {isEscapeKey} from './util.js';
+
 import {onMessageEscKeydown} from './message.js';
 import {scaleReset} from './change-img.js';
 import {resetEffects} from './slider.js';
@@ -22,17 +22,10 @@ const closeUserModal = () => {
   resetEffects();
   userModalElement.classList.add('hidden');
   mainElement.classList.remove('modal-open');
-  //document.removeEventListener('keydown', onMessageEscKeydown);
+  mainElement.style.overflow = 'auto';
+  document.removeEventListener('keydown', onMessageEscKeydown);
 };
 
-/*
-function onModalEscKeydown (evt) {
-  if (isEscapeKey(evt)) {
-    evt.preventDefault();
-    closeUserModal();
-  }
-}
-*/
 userOpenModalElement.addEventListener('change', () => {
   openUserModal();
 });

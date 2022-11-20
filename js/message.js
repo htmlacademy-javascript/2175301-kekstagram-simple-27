@@ -18,7 +18,8 @@ const onMessageEscKeydown = (evt) => {
     const hiddenPopup = document.querySelector('.error');
     if (!hiddenPopup) {
       closeUserModal();
-    } else {hiddenPopup.remove();}
+    } else {hiddenPopup.remove();
+    }
     const hiddenPopupDone = document.querySelector('.success');
     if (hiddenPopupDone) {
       hiddenPopupDone.remove();
@@ -48,5 +49,6 @@ function hideMessage () {
   document.removeEventListener('click',onOverlayClick);
   bodyElement.style.overflow = 'auto';
 }
+
 
 export { showErrorMessage, showSuccessMessage, onMessageEscKeydown};

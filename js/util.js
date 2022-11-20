@@ -14,8 +14,6 @@ getRandomIntInclusive();
 
 const getRandomArrayElement = (elements) => elements[getRandomIntInclusive(0, elements.length - 1)];
 
-const isEscapeKey = (evt) => evt.key === 'Escape'; //проверка нажатой клавиши escape
-
 //Функция для проверки максимальной длинны строки
 
 function checkMaxStringLength(verifiedString, maxLength) {
@@ -48,4 +46,4 @@ const showAlert = (message) => {
     alertContainer.remove();
   }, ALERT_SHOW_TIME);
 };
-export {getRandomArrayElement,getRandomIntInclusive,isEscapeKey,showAlert};
+export {getRandomArrayElement,getRandomIntInclusive,showAlert};
