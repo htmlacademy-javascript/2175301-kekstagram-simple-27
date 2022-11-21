@@ -9,7 +9,7 @@ const userOpenModalElement = document.querySelector('#upload-file');
 
 const userCloseModalElement = document.querySelector('#upload-cancel');
 
-const mainElement = document.querySelector('body');
+const mainElement = document.body;
 
 const openUserModal = () => {
   userModalElement.classList.remove('hidden');

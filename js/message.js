@@ -2,7 +2,7 @@ import { closeUserModal } from './form.js';
 
 const succesMessage = document.querySelector('#success').content.querySelector('.success');
 const errorMessage = document.querySelector('#error').content.querySelector('.error');
-const bodyElement = document.querySelector('body');
+const bodyElement = document.body;
 
 const isEscapeEvent = (evt) => evt.key === 'Escape';
 

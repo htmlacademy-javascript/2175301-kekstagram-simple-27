@@ -2,7 +2,7 @@
 import { showSuccessMessage, showErrorMessage, } from './message.js';
 import { sendData } from './api.js';
 
-const EFFECTS = [
+const EFFECT = [
   {
     name: 'none',
     min: 0,
@@ -50,7 +50,7 @@ const EFFECTS = [
     unit: '',
   },
 ];
-const DEFAULT_EFFECT = EFFECTS[0];
+const DEFAULT_EFFECT = EFFECT[0];
 
 const image = document.querySelector('.img-upload__preview');
 const sliderElement = document.querySelector('.effect-level__slider');
@@ -85,7 +85,7 @@ const findFormChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
   }
-  chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value); {
+  chosenEffect = EFFECT.find((effect) => effect.name === evt.target.value); {
     updateSlider();
   }
   if (evt.target.value === 'none') {
