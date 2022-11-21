@@ -81,7 +81,7 @@ const updateSlider = () => {
   }
 };
 
-const onFormChange = (evt) => {
+const findFormChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
   }
@@ -95,7 +95,7 @@ const onFormChange = (evt) => {
   }
 };
 
-const onSliderUpdate = () => {
+const getSliderUpdate = () => {
   image.style.filter = 'none';
   image.className = '';
   effectLevel.value = '';
@@ -125,15 +125,15 @@ noUiSlider.create(sliderElement, {
 });
 updateSlider();
 
-form.addEventListener('change', onFormChange);
-sliderElement.noUiSlider.on('update', onSliderUpdate);
+form.addEventListener('change', findFormChange);
+sliderElement.noUiSlider.on('update', getSliderUpdate);
 
 const blockSubmitButton = () => {
   submitButton.disabled = true;
   submitButton.textContent = 'Публикую...';
 };
 
-const unblockSubmitButton = () => {
+const unlockSubmitButton = () => {
   submitButton.disabled = false;
   submitButton.textContent = 'Опубликовать';
 };
@@ -147,11 +147,11 @@ const setUserFormSubmit = (onSuccess) => {
       new FormData(evt.target),
       () => {
         onSuccess();
-        unblockSubmitButton();
+        unlockSubmitButton();
         showSuccessMessage();
       },
       () => {
-        unblockSubmitButton();
+        unlockSubmitButton();
         showErrorMessage();
       },
     );
