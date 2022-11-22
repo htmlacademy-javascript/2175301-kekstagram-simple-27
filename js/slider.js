@@ -133,7 +133,7 @@ const blockSubmitButton = () => {
   submitButton.textContent = 'Публикую...';
 };
 
-const unblockSubmitButton = () => {
+const unlockSubmitButton = () => {
   submitButton.disabled = false;
   submitButton.textContent = 'Опубликовать';
 };
@@ -147,11 +147,11 @@ const setUserFormSubmit = (onSuccess) => {
       new FormData(evt.target),
       () => {
         onSuccess();
-        unblockSubmitButton();
+        unlockSubmitButton();
         showSuccessMessage();
       },
       () => {
-        unblockSubmitButton();
+        unlockSubmitButton();
         showErrorMessage();
       },
     );
