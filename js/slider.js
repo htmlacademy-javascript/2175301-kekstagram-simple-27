@@ -2,7 +2,7 @@
 import { showSuccessMessage, showErrorMessage, } from './message.js';
 import { sendData } from './api.js';
 
-const EFFECT = [
+const EFFECTS = [
   {
     name: 'none',
     min: 0,
@@ -50,7 +50,7 @@ const EFFECT = [
     unit: '',
   },
 ];
-const DEFAULT_EFFECT = EFFECT[0];
+const DEFAULT_EFFECT = EFFECTS[0];
 
 const image = document.querySelector('.img-upload__preview');
 const sliderElement = document.querySelector('.effect-level__slider');
@@ -81,11 +81,11 @@ const updateSlider = () => {
   }
 };
 
-const findFormChange = (evt) => {
+const onFormChange = (evt) => {
   if (!evt.target.classList.contains('effects__radio')) {
     return;
   }
-  chosenEffect = EFFECT.find((effect) => effect.name === evt.target.value); {
+  chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value); {
     updateSlider();
   }
   if (evt.target.value === 'none') {
@@ -95,7 +95,7 @@ const findFormChange = (evt) => {
   }
 };
 
-const getSliderUpdate = () => {
+const onSliderUpdate = () => {
   image.style.filter = 'none';
   image.className = '';
   effectLevel.value = '';
@@ -125,8 +125,8 @@ noUiSlider.create(sliderElement, {
 });
 updateSlider();
 
-form.addEventListener('change', findFormChange);
-sliderElement.noUiSlider.on('update', getSliderUpdate);
+form.addEventListener('change', onFormChange);
+sliderElement.noUiSlider.on('update', onSliderUpdate);
 
 const blockSubmitButton = () => {
   submitButton.disabled = true;

@@ -22,6 +22,7 @@ const onOverlayClick = (evt) => {
   }
   const hiddenPopupDoneOverlay = document.querySelector('.success');
   if (evt.target === hiddenPopupDoneOverlay) {
+    evt.preventDefault();
     hiddenPopupDoneOverlay.remove();
   }
 };
